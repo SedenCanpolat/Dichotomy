@@ -5,7 +5,7 @@ using System.Collections;
 public class Transition : MonoBehaviour
 {
     [SerializeField] private CanvasGroup LoadCanvas;
-    private float _fadeDuration = 0.9f;
+    private float _fadeDuration = 0.7f;
 
     public void MakeTransition(Action afterTransitionFunc)
     {

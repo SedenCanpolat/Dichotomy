@@ -1,51 +1,58 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Collections;
 
-public class LevelManagement : MonoBehaviour 
+public class LevelManagement : MonoBehaviour
 {
     public static LevelManagement instance;
     private int _sceneIndex;
-    
+    private Transition _transition;
+
     private void Awake()
     {
-        if (instance != null && instance != this) 
-        { 
+        if (instance != null && instance != this)
+        {
             Destroy(gameObject);
             return;
-        } 
-        else
-        { 
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        } 
+        }
+
+        instance = this;
+        DontDestroyOnLoad(gameObject);
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
-    
+
     private void Start()
     {
-        StartCoroutine(InitializeSceneTransition());
-        
+        _transition = FindFirstObjectByType<Transition>();
+        InitializeSceneTransition();
     }
-    
-    private IEnumerator InitializeSceneTransition()
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        yield return null;
+        _transition = FindFirstObjectByType<Transition>();
+        InitializeSceneTransition();
+    }
+
+    public void InitializeSceneTransition()
+    {
+        if (_transition != null)
+            _transition.SceneChangend();
         
-        var transition = FindFirstObjectByType<Transition>();
-        if (transition != null)
-        {
-            transition.SceneChangend();
-        }
     }
 
     public void ChangeLevelWithTransition(int sceneIndex)
-    { 
+    {
         _sceneIndex = sceneIndex;
-        FindFirstObjectByType<Transition>().MakeTransition(ChangeLevel);
+        _transition.MakeTransition(ChangeLevel);
     }
 
     void ChangeLevel()
     {
         SceneManager.LoadScene(_sceneIndex);
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 }
