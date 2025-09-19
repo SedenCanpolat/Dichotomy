@@ -4,6 +4,7 @@ using UnityEngine.AI;
 public class EnemyFollow : MonoBehaviour
 {
     [SerializeField] private Transform _player;
+    [SerializeField] private float _followDistance = 15f;
     private NavMeshAgent _enemy;
 
     void Start()
@@ -15,6 +16,15 @@ public class EnemyFollow : MonoBehaviour
 
     void Update()
     {
-        _enemy.SetDestination(_player.transform.position);
+        float enemyDistanceToPlayer = Vector3.Distance(transform.position, _player.position);
+        if (enemyDistanceToPlayer <= _followDistance)
+        {
+            _enemy.SetDestination(_player.transform.position);
+        }
+        else
+        {
+            _enemy.ResetPath();
+        }
+
     }
 }
