@@ -18,7 +18,6 @@ public class DialogueManager : MonoBehaviour
 
     private int messageIndex = 0;
     private bool isTyping = false;
-    private bool dialogueActive = false;
     private Coroutine typingCoroutine;
     private Coroutine startDialogueCoroutine;
 
@@ -36,7 +35,6 @@ public class DialogueManager : MonoBehaviour
     {
         messageIndex = 0;
         isTyping = false;
-        dialogueActive = false;
         
         if (typingCoroutine != null)
         {
@@ -73,7 +71,7 @@ public class DialogueManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && dialogueActive)
+        if (Input.GetMouseButtonDown(0))
         {
             if (isTyping)
             {
@@ -126,13 +124,45 @@ public class DialogueManager : MonoBehaviour
         currentMessages = messages;
         currentActors = actors;
         messageIndex = 0;
-        dialogueActive = true;
 
-        dialogueBox.localScale = Vector3.one;  
+        yield return StartCoroutine(AnimateDialogueBoxOpen());
+
         messageText.text = string.Empty;
         actorNameText.text = string.Empty;
 
         DisplayMessage();
+    }
+
+    private IEnumerator AnimateDialogueBoxOpen()
+    {
+        float duration = 0.25f;
+        float elapsed = 0f;
+
+        dialogueBox.localScale = Vector3.zero;
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsed / duration);
+            dialogueBox.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, t);
+            yield return null;
+        }
+        dialogueBox.localScale = Vector3.one;
+    }
+
+    private IEnumerator AnimateDialogueBoxClose()
+    {
+        float duration = 0.25f;
+        float elapsed = 0f;
+
+        Vector3 startScale = dialogueBox.localScale;
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsed / duration);
+            dialogueBox.localScale = Vector3.Lerp(startScale, Vector3.zero, t);
+            yield return null;
+        }
+        dialogueBox.localScale = Vector3.zero;
     }
 
     private void DisplayMessage()
@@ -183,9 +213,7 @@ public class DialogueManager : MonoBehaviour
 
     private void EndDialogue()
     {
-        dialogueActive = false;
-        
-        dialogueBox.localScale = Vector3.zero;
+        StartCoroutine(AnimateDialogueBoxClose());
         
         messageText.text = string.Empty;
         actorNameText.text = string.Empty;
