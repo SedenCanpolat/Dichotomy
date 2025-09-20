@@ -16,7 +16,7 @@ public class Transition : MonoBehaviour
     public void SceneChangend()
     {
         LoadCanvas.alpha = 1f;
-        StartCoroutine(FadeCanvas(1f, 0f, _fadeDuration, null));
+        StartCoroutine(FadeCanvas(1f, 0f, 3f, null));
     }
 
     private IEnumerator FadeCanvas(float start, float end, float duration, Action onComplete)
