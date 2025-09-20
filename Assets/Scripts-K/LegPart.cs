@@ -3,8 +3,8 @@ using UnityEngine.UI;
 
 public class LegPart : MonoBehaviour
 {   
-    public KeyCode rightKey = KeyCode.RightArrow;
-    public KeyCode leftKey = KeyCode.LeftArrow;
+    public KeyCode leftKey = KeyCode.RightArrow;
+    public KeyCode rightKey = KeyCode.LeftArrow;
 
     public PlayerController playerController;
 

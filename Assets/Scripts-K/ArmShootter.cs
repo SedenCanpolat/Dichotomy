@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class ArmShootter : MonoBehaviour
 {   
@@ -6,6 +8,7 @@ public class ArmShootter : MonoBehaviour
     public GameObject bulletPrefab;
     public float bulletForce = 20f;
 	public ParticleSystem muzzleFlash;
+	public Light2D muzzleLight;
 
 	float timer = 0;
 	public float shootInterval = 0.5f; // Yarý saniyede bir atýþ yap
@@ -33,7 +36,15 @@ public class ArmShootter : MonoBehaviour
 		bullet.transform.rotation = Quaternion.Euler(0f, 0f, angle);
 
 		muzzleFlash.Play();
+		StartCoroutine(MuzzleLight());
 		body.AddForce(-direction * bulletForce * 0.1f, ForceMode2D.Impulse); // Geri tepme kuvveti
+	}
+
+	IEnumerator MuzzleLight()
+	{
+			muzzleLight.intensity = 1.5f; // Iþýðý aç
+		yield return new WaitForSeconds(0.1f); // Kýsa bir süre bekle
+		muzzleLight.intensity = 0f; // Iþýðý kapat
 	}
 
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
