@@ -8,9 +8,15 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/kivanc-dev.unity
     guid: 309b76a0110f87244be38c0896a86cfb
+  - enabled: 1
+    path: Assets/Scenes/seden-dev.unity
+    guid: 935dccbf5455dcf489edacbc993f7c48
+  - enabled: 1
+    path: Assets/Scenes/next-seden.unity
+    guid: 104a356a902f8414ea32d13e8b5773f0
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 3590b91b4603b465dbb4216d601bff33, type: 3}
   m_UseUCBPForAssetBundles: 0

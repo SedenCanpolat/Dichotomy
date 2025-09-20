@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class LevelManagement : MonoBehaviour
 {
     public static LevelManagement instance;
+
     private int _sceneIndex;
     private Transition _transition;
 
@@ -37,7 +38,6 @@ public class LevelManagement : MonoBehaviour
     {
         if (_transition != null)
             _transition.SceneChangend();
-        
     }
 
     public void ChangeLevelWithTransition(int sceneIndex)
@@ -46,7 +46,7 @@ public class LevelManagement : MonoBehaviour
         _transition.MakeTransition(ChangeLevel);
     }
 
-    void ChangeLevel()
+    private void ChangeLevel()
     {
         SceneManager.LoadScene(_sceneIndex);
     }
