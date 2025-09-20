@@ -41,8 +41,17 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: SahneArka
+    uniqueID: 3072059871
+    locked: 0
   - name: Player
     uniqueID: 1641602261
+    locked: 0
+  - name: "Sahne\xD6n"
+    uniqueID: 3820383879
+    locked: 0
+  - name: "\xD6nde olmas\u0131 gereken \u015Feyler"
+    uniqueID: 268821945
     locked: 0
   m_RenderingLayers:
   - Default

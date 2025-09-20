@@ -1,7 +1,6 @@
 using JetBrains.Annotations;
 using UnityEngine;
 
-
 public class PlayerController : MonoBehaviour
 {
 	public GameObject bodySprite;
@@ -11,11 +10,77 @@ public class PlayerController : MonoBehaviour
 
 	float health = 100f;
 
+	public bool isGunActive = false;
+	public bool isPickActive = false;
+
+	[Header("Burayý görme ölü leþi gibi atama var")]
+	public GameObject ArmedArm;
+	public GameObject UnarmedArm;
+	public GameObject GunArm;
+	[Space]
+	public GameObject PickedArm;
+	public GameObject UnpickedArm;
+	public GameObject PickArm;
+
 	void Start()
 	{
 		rb = GetComponent<Rigidbody2D>();
 		motor = new JointMotor2D();
 		hj = GetComponent<HingeJoint2D>();
+
+		CheckActiveArms();
+	}
+
+	public void CheckActiveArms()
+	{
+		if (isGunActive == true)
+		{
+			ArmedArm.SetActive(true);
+			UnarmedArm.SetActive(false);
+			
+			GunArm.GetComponent<ArmAimRobust>().enabled = true;
+			GunArm.GetComponent<ArmShootter>().enabled = true;
+			
+			// Bahnschrift
+
+			GunArm.GetComponent<HingeJoint2D>().useMotor = true;
+
+		}
+		else
+		{
+			ArmedArm.SetActive(false);
+			UnarmedArm.SetActive(true);
+
+			GunArm.GetComponent<ArmAimRobust>().enabled = false;
+			GunArm.GetComponent<ArmShootter>().enabled = false;
+
+			GunArm.GetComponent<HingeJoint2D>().useMotor = false;
+
+		}
+
+		if (isPickActive == true)
+		{
+			PickedArm.SetActive(true);
+			UnpickedArm.SetActive(false);
+
+			PickArm.GetComponent<ArmAimRobust>().enabled = true;
+			PickArm.GetComponent<PolygonCollider2D>().enabled = true;
+
+			PickArm.GetComponent<HingeJoint2D>().useMotor = true;
+
+		}
+		else
+		{
+			PickedArm.SetActive(false);
+			UnpickedArm.SetActive(true);
+
+			PickArm.GetComponent<ArmAimRobust>().enabled = false;
+			PickArm.GetComponent<PolygonCollider2D>().enabled = false;
+
+			PickArm.GetComponent<HingeJoint2D>().useMotor = false;
+		}
+
+
 	}
 
 	private void Update()
