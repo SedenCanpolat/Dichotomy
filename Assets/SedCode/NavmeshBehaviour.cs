@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyFollow : MonoBehaviour
+public class NavmeshBehaviour : MonoBehaviour
 {
     [SerializeField] private Transform _player;
     [SerializeField] private float _followDistance = 15f;

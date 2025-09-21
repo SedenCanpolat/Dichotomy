@@ -1,19 +1,24 @@
 using UnityEngine;
 
-public class EnemyInteractBehaviour : MonoBehaviour
+public class DroneBehaviour : MonoBehaviour
 {
     void Start()
     {
-        TriggerArea.OnTriggerArea += _explosionAnimation;
+        //TriggerArea.OnTriggerArea += _explosionAnimation;
     }
     private void _explosionAnimation()
     {
         Destroy(gameObject);
     }
 
+    public void Interacted()
+    {
+        _explosionAnimation();
+    }
+
     void OnDestroy()
     {
-        TriggerArea.OnTriggerArea -= _explosionAnimation;
+        //TriggerArea.OnTriggerArea -= _explosionAnimation;
     }
 
 
