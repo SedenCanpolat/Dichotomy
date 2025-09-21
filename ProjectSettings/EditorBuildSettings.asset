@@ -6,8 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/kivanc-dev.unity
-    guid: 309b76a0110f87244be38c0896a86cfb
+    path: Assets/Scenes/Menu.unity
+    guid: d1e9b5c8b247d46458e2d3eaa6ca5275
+  - enabled: 1
+    path: Assets/Scenes/GameScene-1.unity
+    guid: de86c7554c25bee4483644a08d69976c
+  - enabled: 1
+    path: Assets/Scenes/GameScene-2.unity
+    guid: ef7233e5fcdddf34ebad94e2586ec270
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 3590b91b4603b465dbb4216d601bff33, type: 3}
   m_UseUCBPForAssetBundles: 0

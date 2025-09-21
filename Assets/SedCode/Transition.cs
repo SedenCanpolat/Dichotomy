@@ -15,11 +15,13 @@ public class Transition : MonoBehaviour
     private Action _afterCutsceneAction;
     private bool op = false;
 
-    public void MakeTransition(Action afterCutsceneAction)
-    {
-        _afterCutsceneAction = afterCutsceneAction;
+    private int nextSceneIndex;
 
-        LoadCanvas.alpha = 0f;
+	public void MakeTransition(int index)
+    {
+        //_afterCutsceneAction = afterCutsceneAction;
+        nextSceneIndex = index;
+		LoadCanvas.alpha = 0f;
         StartCoroutine(FadeCanvas(0f, 1f, _fadeDuration, ShowCutscene));
         Invoke("_playSFX", SFXTimeForCutscene);
     }
@@ -81,5 +83,10 @@ public class Transition : MonoBehaviour
 
         LoadCanvas.alpha = end;
         onComplete?.Invoke();
-    }
+        
+
+
+	}
+
+   
 }

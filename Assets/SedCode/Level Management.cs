@@ -1,58 +1,78 @@
+using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LevelManagement : MonoBehaviour
 {
-    public static LevelManagement instance;
-
+    
     private int _sceneIndex;
-    private Transition _transition;
+    public Animator _animator;
 
-    private void Awake()
+    public Image cutScene;
+	public GameObject passButton;
+
+    public float appearSpeed;
+
+    private bool isCutsceneApearad = false;
+	private bool kararsinmi = false;
+
+	public int nextLevelIndex;
+
+	private void Start()
+	{
+		isCutsceneApearad = false;
+		passButton.SetActive(false);
+	}
+
+	private void Update()
+	{
+		if(isCutsceneApearad == true && cutScene.color.a < 0.99f && kararsinmi == false)
+        {   
+            Color c = cutScene.color;
+			c.a += appearSpeed * Time.deltaTime;
+            cutScene.color = c;
+		}
+		else if(cutScene.color.a >= 0.99f)
+		{
+			passButton.SetActive(true);
+		}
+
+		if (isCutsceneApearad == true && cutScene.color.a > 0.01f && kararsinmi)
+		{
+			Color c = cutScene.color;
+			Debug.Log(c.a);
+			c.a -= appearSpeed * Time.deltaTime;
+			cutScene.color = c;
+		}
+		else if (cutScene.color.a <= 0.01f && kararsinmi)
+		{
+			LevelChanged();
+		}
+	}
+
+	public void ChangeLevelWithTransition()
     {
-        if (instance != null && instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
+        _animator.SetTrigger("geçiþ");
+        StartCoroutine(ChangeLevel());
+        
+	}
 
-        instance = this;
-        DontDestroyOnLoad(gameObject);
+	public void PassButtonClicked()
+	{
+		kararsinmi = true;
+	}
 
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
 
-    private void Start()
+	IEnumerator ChangeLevel()
     {
-        _transition = FindFirstObjectByType<Transition>();
-        InitializeSceneTransition();
-    }
+        yield return new WaitForSeconds(1f);
+        isCutsceneApearad = true;		
+	}
 
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+	public void LevelChanged()
     {
-        _transition = FindFirstObjectByType<Transition>();
-        InitializeSceneTransition();
-    }
-
-    public void InitializeSceneTransition()
-    {
-        if (_transition != null)
-            _transition.SceneChangend();
-    }
-
-    public void ChangeLevelWithTransition(int sceneIndex)
-    {
-        _sceneIndex = sceneIndex;
-        _transition.MakeTransition(ChangeLevel);
-    }
-
-    private void ChangeLevel()
-    {
-        SceneManager.LoadScene(_sceneIndex);
-    }
-
-    private void OnDestroy()
-    {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
-    }
+		SceneManager.LoadScene(nextLevelIndex);
+	}   
 }
