@@ -9,6 +9,10 @@ public class TransitionController : MonoBehaviour
     {
         animator = GetComponent<Animator>();
     }
-
+    public void KapatAMK()
+    {
+		//GetComponent<Animator>().Rebind();
+		gameObject.SetActive(false);
+	}
     
 }

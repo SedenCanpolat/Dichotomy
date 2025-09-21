@@ -20,10 +20,13 @@ public class LevelManagement : MonoBehaviour
 
 	public int nextLevelIndex;
 
+	public GameObject canvas;
+
 	private void Start()
 	{
 		isCutsceneApearad = false;
 		passButton.SetActive(false);
+		_animator.Play("geçiþ 0", -1, 0f);
 	}
 
 	private void Update()
@@ -54,9 +57,12 @@ public class LevelManagement : MonoBehaviour
 
 	public void ChangeLevelWithTransition()
     {
-        _animator.SetTrigger("geçiþ");
+		canvas.SetActive(true);
+		_animator.SetTrigger("geçiþ");
         StartCoroutine(ChangeLevel());
+
         
+		
 	}
 
 	public void PassButtonClicked()

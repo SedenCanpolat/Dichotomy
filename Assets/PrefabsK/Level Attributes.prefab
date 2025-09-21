@@ -123,8 +123,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5874110999821829878}
         m_TargetAssemblyTypeName: LevelManagement, Assembly-CSharp
-        m_MethodName: LevelChanged
-        m_Mode: 3
+        m_MethodName: PassButtonClicked
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -232,8 +232,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -306,7 +306,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &8069196447785021618
 MonoBehaviour:
@@ -320,10 +320,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -583,8 +583,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -681,6 +681,7 @@ MonoBehaviour:
   passButton: {fileID: 2989362100460029974}
   appearSpeed: 1
   nextLevelIndex: 2
+  canvas: {fileID: 5427640523770905094}
 --- !u!1001 &7651105121562865398
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -696,6 +697,10 @@ PrefabInstance:
     - target: {fileID: 3610140370441009309, guid: 6c71d182f4ba99c4d8ad1f8b3ed0888a, type: 3}
       propertyPath: m_Name
       value: Door
+      objectReference: {fileID: 0}
+    - target: {fileID: 4057420376919144401, guid: 6c71d182f4ba99c4d8ad1f8b3ed0888a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4057420376919144401, guid: 6c71d182f4ba99c4d8ad1f8b3ed0888a, type: 3}
       propertyPath: _getInDistance
