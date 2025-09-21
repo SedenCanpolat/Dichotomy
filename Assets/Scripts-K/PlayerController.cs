@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 	public static bool canControl = true;
-	
 
+#nullable enable
 	public GameObject bodySprite;
 	Rigidbody2D rb;
 	HingeJoint2D hj;
@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
 	public GameObject UnpickedArm;
 	public GameObject PickArm;
 	[Space]
-	public GameObject DeadScreen;
+	public GameObject? DeadScreen;
 	
 
 	void Start()

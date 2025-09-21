@@ -235,7 +235,7 @@ PrefabInstance:
     - target: {fileID: 3921594502480046505, guid: 29d02d941f818ac40b0ef90b95433a0d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 500118812}
+      objectReference: {fileID: 1172077923}
     - target: {fileID: 3921594502480046505, guid: 29d02d941f818ac40b0ef90b95433a0d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ChangeLevelWithTransition
@@ -337,17 +337,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29d02d941f818ac40b0ef90b95433a0d, type: 3}
---- !u!114 &500118812 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5874110999821829878, guid: 836a5e99fceb8af4d87a483645bec8be, type: 3}
-  m_PrefabInstance: {fileID: 1837593094}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 473dafc601fa7b8429bc3d2f76372047, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &591152273
 GameObject:
   m_ObjectHideFlags: 0
@@ -455,6 +444,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8533818291680052070, guid: 29d02d941f818ac40b0ef90b95433a0d, type: 3}
   m_PrefabInstance: {fileID: 250730362}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1172077923 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7040588650663387023, guid: 836a5e99fceb8af4d87a483645bec8be, type: 3}
+  m_PrefabInstance: {fileID: 1837593094}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 473dafc601fa7b8429bc3d2f76372047, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1520154429
 GameObject:
   m_ObjectHideFlags: 0
@@ -703,6 +703,10 @@ PrefabInstance:
     - target: {fileID: 3714717203529649227, guid: 836a5e99fceb8af4d87a483645bec8be, type: 3}
       propertyPath: m_Name
       value: Level Attributes
+      objectReference: {fileID: 0}
+    - target: {fileID: 7040588650663387023, guid: 836a5e99fceb8af4d87a483645bec8be, type: 3}
+      propertyPath: nextLevelIndex
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
