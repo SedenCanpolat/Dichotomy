@@ -19,6 +19,11 @@ public class MenuController : MonoBehaviour
     public int gameSceneIndex;
     public int mainMenuIndex;
 
+    public static void Kronos(float zaman)
+    {
+        Time.timeScale = zaman;
+	}
+
     private void Start()
     {
         if (menuType == MenuType.PauseMenu)
@@ -36,8 +41,8 @@ public class MenuController : MonoBehaviour
                 menuContent.SetActive(!menuContent.activeSelf);
             }
 
-            Time.timeScale = menuContent.activeSelf == true ? 0f : 1f;
-        }
+            Kronos(menuContent.activeSelf ? 0f : 1f);
+		}
     }
     public void StartGame()
     {
@@ -51,14 +56,14 @@ public class MenuController : MonoBehaviour
     public void ReturnToMainMenu()
     {
         SceneManager.LoadScene(mainMenuIndex);
-        Time.timeScale = 1f;
-    }
+		Kronos(1);
+	}
 
     public void ResumeGame()
     {
         menuContent.SetActive(false);
-        Time.timeScale = 1f;
-    }
+		Kronos(0);
+	}
     
     public void PanelOpen(GameObject panel)
     {

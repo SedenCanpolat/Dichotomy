@@ -81,4 +81,9 @@ public class LevelManagement : MonoBehaviour
     {
 		SceneManager.LoadScene(nextLevelIndex);
 	}   
+
+	public void Restarter()
+	{
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+	}
 }

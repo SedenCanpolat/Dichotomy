@@ -18,13 +18,17 @@ public class LegPart : MonoBehaviour
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
 	void Start()
     {
-        hinge = GetComponent<HingeJoint2D>();
+		if (PlayerController.canControl == false)
+			return;
+		hinge = GetComponent<HingeJoint2D>();
 	}
 
     // Update is called once per frame
     void Update()
     {
-        Controls();
+		if (PlayerController.canControl == false)
+			return;
+		Controls();
     }
 
     void Controls()

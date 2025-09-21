@@ -8,6 +8,21 @@ public class Bullet : MonoBehaviour
 	{		      
         Instantiate(impactEffect, transform.position, transform.rotation);
 
+
+		if(collision.gameObject.CompareTag("Player"))
+		{
+			collision.gameObject.GetComponent<Refer>().playerController.Damage(15);
+		}
+
+		if (collision.gameObject.CompareTag("bossPart") )
+		{
+			collision.gameObject.transform.root.GetComponent<Boss>().TakeDamage(20);
+			if(collision.gameObject.transform.root.GetComponent<Boss>().health <= 0)
+			{
+				collision.gameObject.SetActive(false);
+			}
+		}
+
 		Destroy(gameObject);
 	}
 }

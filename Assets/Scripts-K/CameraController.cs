@@ -5,7 +5,11 @@ public class CameraController : MonoBehaviour
     public Vector3 offset;
     public float speed;
     public Transform target;
-    public Transform bossTarget;    
+    public Transform bossTarget;
+
+    public int bossZoom;
+    public int normalZoom;
+
 
     public bool isBossLevel = false;
 
@@ -16,11 +20,15 @@ public class CameraController : MonoBehaviour
         {
             var targetdest = new Vector3(target.position.x + offset.x, target.position.y + offset.y, transform.position.z);
 			transform.position = Vector3.Lerp(transform.position, targetdest, speed * Time.deltaTime);
-		}
+            Camera.main.orthographicSize = Mathf.Lerp(Camera.main.orthographicSize, normalZoom, speed * Time.deltaTime);
+        }
+        
         else
         {
 			var targetdest = new Vector3((bossTarget.position.x + target.position.x) / 2 + offset.y, (bossTarget.position.y + target.position.y) / 2 + offset.y, transform.position.z);
 			transform.position = Vector3.Lerp(transform.position, targetdest, speed * Time.deltaTime);
+			Camera.main.orthographicSize = Mathf.Lerp(Camera.main.orthographicSize, bossZoom, speed * Time.deltaTime);
+
 		}
 	}
 }
