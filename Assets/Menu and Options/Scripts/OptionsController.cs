@@ -24,7 +24,7 @@ public class OptionsController : MonoBehaviour
 		InitializeAudio();
 		LoadAudio();		
 		masterAudioVolume = AudioListener.volume;
-		Time.timeScale = 1f;
+		MenuController.Kronos(1);
 	}
 
 	private void InitializeAudio()
