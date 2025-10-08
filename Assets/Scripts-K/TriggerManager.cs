@@ -4,18 +4,21 @@ using System;
 
 public class TriggerManager : MonoBehaviour
 {
+#nullable enable
 	public enum TriggerType
 	{
 		PopUpScreen,
-		biseyler
+		PassLevel
 	};
 	public TriggerType triggerType;
 
-	public GameObject popUpScreenElement;
+	[SerializeField] private GameObject? popUpScreenElement;
+	[SerializeField] private BaseLevelSystem? levelSystem;
 
 	private void Start()
 	{
-		popUpScreenElement.SetActive(false); // Baþlangýçta pop-up ekranýný gizle
+		if(triggerType == TriggerType.PopUpScreen)
+			popUpScreenElement?.SetActive(false); 
 	}
 
 	public void OnTriggerEnter2D(Collider2D collision)
@@ -24,13 +27,14 @@ public class TriggerManager : MonoBehaviour
 		{
 			if(collision.CompareTag("Player"))
 			{
-				popUpScreenElement.SetActive(true); 
-				popUpScreenElement.GetComponent<Animator>().SetBool("isOpen", true);
+				popUpScreenElement?.SetActive(true); 
+				popUpScreenElement?.GetComponent<Animator>().SetBool("isOpen", true);
 			}
 		}
-		else if(triggerType == TriggerType.biseyler)
+		else if(triggerType == TriggerType.PassLevel)
 		{
-			// Baþka bir tetikleyici türü için iþlemler
+			if(collision.CompareTag("Player"))
+				levelSystem?.LevelCompleted();
 		}
 	}
 	public void OnTriggerExit2D(Collider2D collision)
@@ -40,17 +44,14 @@ public class TriggerManager : MonoBehaviour
 			if (collision.CompareTag("Player"))
 			{
 				Invoke("Closer", 2f);
-				popUpScreenElement.GetComponent<Animator>().SetBool("isOpen", false);
+				popUpScreenElement?.GetComponent<Animator>().SetBool("isOpen", false);
 			}
 		}
-		else if (triggerType == TriggerType.biseyler)
-		{
 		
-		}
 	}
 
 	private void Closer()
 	{
-		popUpScreenElement.SetActive(false);
+		popUpScreenElement?.SetActive(false);
 	}
 }

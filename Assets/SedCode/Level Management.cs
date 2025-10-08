@@ -22,11 +22,14 @@ public class LevelManagement : MonoBehaviour
 
 	public GameObject canvas;
 
+	bool helo = false;
+
 	private void Start()
 	{
 		isCutsceneApearad = false;
 		passButton.SetActive(false);
 		_animator.Play("geçiþ 0", -1, 0f);
+		helo = false;
 	}
 
 	private void Update()
@@ -57,12 +60,17 @@ public class LevelManagement : MonoBehaviour
 
 	public void ChangeLevelWithTransition()
     {
-		canvas.SetActive(true);
-		_animator.SetTrigger("geçiþ");
-        StartCoroutine(ChangeLevel());
+		if (!helo)
+		{
 
-        
+			canvas.SetActive(true);
+			_animator.SetTrigger("geçiþ");
+			StartCoroutine(ChangeLevel());
+			helo = true;
+		}
 		
+        
+
 	}
 
 	public void PassButtonClicked()

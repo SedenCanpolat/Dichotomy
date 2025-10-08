@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - bossPart
+  - bullet
   layers:
   - Default
   - TransparentFX

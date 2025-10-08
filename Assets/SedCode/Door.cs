@@ -11,8 +11,10 @@ public class Door : MonoBehaviour
         float playerDistanceToDoor = Vector3.Distance(transform.position, _player.position);
         if (playerDistanceToDoor <= _getInDistance)
         {
+			
 			_levelManagement.ChangeLevelWithTransition();
-        }
+           
+		}
     }
 }
 

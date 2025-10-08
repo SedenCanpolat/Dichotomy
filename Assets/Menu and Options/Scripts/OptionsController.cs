@@ -44,11 +44,13 @@ public class OptionsController : MonoBehaviour
 	{
 		masterSlider_value.text = (masterSlider.value * 100).ToString("0");
 		PlayerPrefs.SetFloat("Master_Volume", masterSlider.value);	
+		LoadAudio();
 	}
 	public void SaveMusicAudio()
 	{
 		musicSlider_value.text = (musicSlider.value * 100).ToString("0");
 		PlayerPrefs.SetFloat("Music_Volume", musicSlider.value);
+		LoadAudio();
 	}
 
 	public void LoadAudio()

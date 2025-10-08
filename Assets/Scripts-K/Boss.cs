@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Boss : MonoBehaviour
 {	
@@ -33,23 +34,33 @@ public class Boss : MonoBehaviour
 	public float faz1_durationChange = 5f;
     private float faz1_timer;
     private bool faz1_attack_checker = true;
+	private bool summoned = false;
+
 
 	public float range = 10f;
 	public Animator animator;
 
+	public GameObject dronePrefab;
+	public Transform droneSpawnPoint;
+	private int startingHealth;
+
 
 	RaycastHit2D hit;
+
+	public Slider healthBar;
 
 	private void Start()
 	{
 		playerPos = GameObject.FindGameObjectWithTag("Player").transform;
 		if(health <= 0) { 			Die();
 		}
+		startingHealth = health;
 	}
 
     private void Update()
     {
-        if (currentState == BossState.Faz1)
+        healthBar.value = (float)health / (float)startingHealth;
+		if (currentState == BossState.Faz1)
         {
 			lazer.SetActive(false);
 
@@ -71,12 +82,18 @@ public class Boss : MonoBehaviour
 
 			if (faz1_attack_checker)
 			{
+				summoned = false;
 				PassiveAttack();
 				animator.SetBool("summon", false);
 			}
 			else
 			{
-				SummonEnemies();
+				if(summoned == false)
+				{
+					SummonEnemies();
+					
+				}
+				
 			}
 		}
 
@@ -98,8 +115,10 @@ public class Boss : MonoBehaviour
 
         if(shootTimer >= shootInterval)
         {
-			GameObject newSiringa = Instantiate(siringa, firePoint.position, Quaternion.FromToRotation(Vector2.right, direction));
-			newSiringa.GetComponent<Rigidbody2D>().AddForce(direction.normalized * 20f * passiveForce, ForceMode2D.Impulse);
+			float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
+			Quaternion rotation = Quaternion.Euler(0, 0, angle);
+			GameObject newSiringa = Instantiate(siringa, firePoint.position, rotation);
+			newSiringa.GetComponent<Rigidbody2D>().AddForce(direction.normalized * .2f * passiveForce, ForceMode2D.Impulse);
 			Debug.Log("Passive Attack");
 			animator.SetTrigger("Attack");
 			shootTimer = 0;          
@@ -110,9 +129,23 @@ public class Boss : MonoBehaviour
     {
         Debug.Log("Summon Enemies");
 		animator.SetBool("summon", true);
+		summoned = true;
+		StartCoroutine(Summonator());
 	}
 
-    private void LazerAttack()
+	IEnumerator Summonator()
+	{
+		
+		for (int i = 0; i < 5; i++)
+		{
+			Instantiate(dronePrefab, droneSpawnPoint.position, Quaternion.identity);
+			yield return new WaitForSeconds(0.5f);
+		}
+	}
+	
+
+
+	private void LazerAttack()
     {     
 		hit = Physics2D.Raycast(firePoint.position, -firePoint.transform.right, 100);
 		if(hit.collider != null)

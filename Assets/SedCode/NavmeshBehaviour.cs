@@ -3,13 +3,14 @@ using UnityEngine.AI;
 
 public class NavmeshBehaviour : MonoBehaviour
 {
-    [SerializeField] private Transform _player;
+    private Transform _player;
     [SerializeField] private float _followDistance = 15f;
     private NavMeshAgent _enemy;
 
     void Start()
-    {
-        _enemy = GetComponent<NavMeshAgent>();
+    {   
+        _player = GameObject.FindWithTag("Player").transform;
+		_enemy = GetComponent<NavMeshAgent>();
         _enemy.updateRotation = false;
         _enemy.updateUpAxis = false;
     }
@@ -25,6 +26,5 @@ public class NavmeshBehaviour : MonoBehaviour
         {
             _enemy.ResetPath();
         }
-
     }
 }
