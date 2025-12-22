@@ -5,7 +5,7 @@
 The game was ranked in the **Top 15–50** out of **400+ contributors**.  
 *(Note: There is no exact ranking within the 15–50 bracket.)*
 
-In *Dichotomy*, players control two characters who are struggling after being kidnapped by an evil scientist and turned into conjoined twins. Together, they must fight for their freedom.
+In Dichotomy, players control two characters who are struggling after being kidnapped by an evil scientist and turned into conjoined twins. Together, they must fight for their freedom.
 
 🎮 **Play From Here**: [https://seden.itch.io/dichotomy](https://seden.itch.io/dichotomy)
 
