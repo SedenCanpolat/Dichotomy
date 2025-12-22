@@ -13,4 +13,7 @@ In the game, players control two characters who are struggling after being kidna
 
 In terms of coding, I worked on:
 - Scene management and transitions  
-- Enemy AI behaviors  
+- Enemy AI behaviors
+
+![MagaraJam252025-10-0514-20-51-ezgif com-optimize](https://github.com/user-attachments/assets/aae10454-a81a-4523-9b88-3ff440d8d24b)
+
