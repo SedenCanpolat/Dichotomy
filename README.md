@@ -12,7 +12,7 @@ In the game, players control two characters who are struggling after being kidna
 **Seden Canpolat:** I worked as a developer, handling the coding, story, and level design.  
 
 In terms of coding, I worked on:
-- Scene management and transitions  
+- Scene management, transitions, and dialogue system  
 - Enemy AI behaviors
 
 ![MagaraJam252025-10-0514-20-51-ezgif com-optimize](https://github.com/user-attachments/assets/aae10454-a81a-4523-9b88-3ff440d8d24b)
