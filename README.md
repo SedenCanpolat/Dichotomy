@@ -17,7 +17,7 @@ In terms of coding, I worked on:
 
 ![MagaraJam252025-10-0514-20-51-ezgif com-optimize](https://github.com/user-attachments/assets/aae10454-a81a-4523-9b88-3ff440d8d24b)
 
-## Key Technical Implementations
+## 🛠️ Key Technical Implementations
 
 ### Physics-Based Character Control System
 
