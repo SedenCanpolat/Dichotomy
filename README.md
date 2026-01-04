@@ -27,62 +27,56 @@ Implemented a dual-character control scheme using Unity’s `HingeJoint2D` and `
   Each leg (thigh and calf) operates independently via separate input keys.
 
 - **Motor-driven physics**  
-  Proportional motor control maintains body balance while allowing dynamic movement.
+  Joint motors apply torque-based movement for walking and balance.
 
-- **Adaptive stabilization**  
-  Angular difference calculations automatically stabilize the body during motion.
+- **Basic stabilization logic**  
+  Angular difference calculations help reduce excessive misalignment when idle.
 
 ### Physics-Based Arm Aiming (Joint-Driven)
 
-Developed a proportional control system for a realistic 2D arm aiming using physics joints:
+Developed a proportional control system for a 2D arm aiming using physics joints:
 
 - **Angle-error–based motor control**  
   Arm rotation is driven by the angular difference toward the mouse position.
 
 - **Motor speed clamping**  
-  Ensures stable and responsive joint movement (up to 360°/s).
+  Limits joint rotation speed for stable aiming.
 
 - **Joint limit support**  
-  Optional constraints for controlled arm rotation.
+  Optional angle clamping when joint limits are enabled.
 
 - **Recoil mechanics**  
-  Impulse forces are applied during shooting to provide physical feedback.
+  Impulse forces are applied to the player's body during shooting.
 
 - **Physics-driven design**  
   Uses joint motor control instead of inverse kinematics.
 
-### Typewriter Dialogue System
+### Dialogue System
 
-Built a coroutine-based dialogue manager with smooth text animations:
+Built a coroutine-based dialogue system with text animation:
 
 - **Character-by-character rendering**  
-  Adjustable text speed for a typewriter effect.
+  Typewriter-style text output.
 
-- **Skip functionality**  
-  Click to instantly complete the current message or advance to the next.
+- **Adjustable text speed**  
+  Text speed is configurable.
 
 - **UI animations**  
-  Smooth scale-based dialogue box open and close transitions using `Lerp`.
+  Dialogue box open and close transitions using scaling.
 
 - **Actor-message mapping**  
-  Flexible system supporting multiple speakers per conversation.
-
-- **State management**  
-  Proper coroutine cleanup to prevent memory leaks.
+  Supports multiple actors per dialogue sequence.
 
 ### NavMesh Enemy AI
 
-Utilized Unity’s NavMesh system for intelligent enemy pathfinding:
+Utilized Unity’s `NavMeshAgent` system for enemy movement:
 
 - **Distance-based activation**  
-  Enemies pursue the player only within detection range to optimize performance.
+  Enemies pursue or react only within a defined detection range.
 
 - **2D NavMesh configuration**  
-  Proper setup for 2D physics with rotation and up-axis updates disabled.
+  Rotation and up-axis updates are disabled for 2D compatibility.
 
 - **Proximity-triggered behaviors**  
-  Explosion mechanics activate when enemies reach a specified range.
-
-- **Dynamic destination updates**  
-  Continuous path recalculation ensures responsive enemy movement.
+  Certain enemies explode when reaching a specified range near the player.
 
