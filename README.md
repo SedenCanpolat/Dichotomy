@@ -78,8 +78,9 @@ Utilized Unity’s `NavMeshAgent` system for enemy movement:
   Rotation and up-axis updates are disabled for 2D compatibility.
 
 - **Proximity-triggered behaviors**  
-  Certain enemies explode when reaching a specified range near the player.
+  Certain enemies explode when reaching a specified range near the player.  
 
-![ezgif com-optimize](https://github.com/user-attachments/assets/c1be1c0a-3509-4465-a348-f0df15b748ab)
+
+![ezgif com-optimize](https://github.com/user-attachments/assets/5d4bd682-c3c4-4ee0-91c0-68e9c64390b4)
 
 
