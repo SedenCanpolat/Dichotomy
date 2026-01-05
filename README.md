@@ -80,3 +80,6 @@ Utilized Unity’s `NavMeshAgent` system for enemy movement:
 - **Proximity-triggered behaviors**  
   Certain enemies explode when reaching a specified range near the player.
 
+![ezgif com-optimize](https://github.com/user-attachments/assets/c1be1c0a-3509-4465-a348-f0df15b748ab)
+
+
